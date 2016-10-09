@@ -7,13 +7,13 @@ import android.widget.TextView;
 import java.io.IOException;
 
 import hongliang.mylibrary.https.HttpListener;
-import hongliang.mylibrary.https.OkHttpManager;
+import hongliang.mylibrary.https.OkhttpManager;
 import okhttp3.Call;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private OkHttpManager okHttpManager;
+    private OkhttpManager okhttpManager;
     private TextView t;
 
     @Override
@@ -22,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         t = (TextView) findViewById(R.id.text);
 
-        okHttpManager = new OkHttpManager();
-        getData(okHttpManager);
+        okhttpManager = new OkhttpManager();
+        getData(okhttpManager);
     }
 
-    private void getData(OkHttpManager okHttpManager) {
+    private void getData(OkhttpManager okhttpManager) {
         String postData = "{\"id\":\"b3ee0854-8a91-4865-bf5d-a4c05c13891a\",\"uid\":\"bb29e7c3-15f6-456c-bf37-3ea809cc64a7\"}";
         String url = "http://go.1000fun.com/api/api/app/v2.0/member/order/info";
-        okHttpManager.stringPost(postData,url,"",httpListener);
+        okhttpManager.stringPost(postData,url,"",httpListener);
     }
 
     HttpListener httpListener = new HttpListener() {
