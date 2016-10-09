@@ -19,14 +19,14 @@ import okhttp3.Response;
  *  okhttp管理类
  *
  */
-public class OkhttpManager {
+public class OkHttpManager {
 
     public static final String HTTPS = "HTTPS";
     private final MediaType MEDIA_TYPE_MARKDOWN
             = MediaType.parse("application/json; charset=utf-8"); //要传递的数据的MIME类型
 
     private OkHttpClient client;
-    public OkhttpManager() {
+    public OkHttpManager() {
         client = new OkHttpClient();
     }
 
