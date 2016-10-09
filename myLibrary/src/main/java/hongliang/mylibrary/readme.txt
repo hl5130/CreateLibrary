@@ -4,6 +4,7 @@
     caching： 缓存
                 数据库存储方式、SharePreferences存储是、ContentProvider存储、文件存储（存入SDCard）
     https：网络请求
+                使用OkHttp
 
     image：图片处理， 因为图片过大，容易造成OOM
 
