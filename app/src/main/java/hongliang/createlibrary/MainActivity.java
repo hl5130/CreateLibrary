@@ -1,13 +1,16 @@
 package hongliang.createlibrary;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
 import hongliang.mylibrary.https.HttpListener;
 import hongliang.mylibrary.https.OkHttpManager;
+import hongliang.mylibrary.utils.LogUtils;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -15,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private OkHttpManager okHttpManager;
     private TextView t;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
     HttpListener httpListener = new HttpListener() {
         @Override
         public void Success(Call call, Response response) throws IOException {
-            t.setText(response.body().string());
+//            t.setText(response.body().string());
+            LogUtils.e(OkHttpManager.HTTPS,response.body().string());
+//            Toast.makeText(MainActivity.this, response.body().string(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void Fail(Call call, IOException e) {
-            t.setText(e.toString());
+//            t.setText(e.toString());
         }
     };
 }
