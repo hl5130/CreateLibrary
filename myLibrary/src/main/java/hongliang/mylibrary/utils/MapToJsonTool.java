@@ -18,7 +18,6 @@ public class MapToJsonTool {
      */
     public static <T> String mapToJson(Map<String, T> map) {
         Gson gson = new Gson();
-        String jsonStr = gson.toJson(map);
-        return jsonStr;
+        return gson.toJson(map);
     }
 }
