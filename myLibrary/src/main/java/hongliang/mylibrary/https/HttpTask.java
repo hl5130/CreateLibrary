@@ -2,6 +2,7 @@ package hongliang.mylibrary.https;
 
 import java.util.HashMap;
 
+import hongliang.mylibrary.https.callBack.HttpListener;
 import hongliang.mylibrary.utils.MapToJsonTool;
 
 /**
@@ -13,11 +14,11 @@ public class HttpTask {
         String method = params.getMethod();
         HashMap<String, Object> params1 = params.getParams();
         if (null != params1){
-            OkHttpManager.getInstance().stringPost(MapToJsonTool.mapToJson(params1),baseUrl+method,"",listener);
+            OkHttpManager.getInstance().stringPost(MapToJsonTool.mapToJson(params1),baseUrl+method,listener);
         }
     }
 
-    public static void get(String url) throws Exception {
-        OkHttpManager.getInstance().asyGet(url);
+    public static void get(String url,HttpListener httpListener) throws Exception {
+        OkHttpManager.getInstance().asyGet(url,httpListener);
     }
 }

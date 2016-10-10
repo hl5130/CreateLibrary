@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import hongliang.mylibrary.https.HttpLogger;
 import hongliang.mylibrary.https.HttpTask;
+import hongliang.mylibrary.https.callBack.HttpListener;
 import hongliang.mylibrary.utils.LogUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -16,8 +17,10 @@ import okhttp3.Response;
  * 异步Get请求，不会阻塞当前线程
  */
 public class HttpAsyGet {
+    private HttpListener httpListener;
 
-    public static void run(String url,OkHttpClient client) throws Exception{
+    public void run(String url, OkHttpClient client, HttpListener httpListener) throws Exception{
+        this.httpListener = httpListener;
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -25,10 +28,11 @@ public class HttpAsyGet {
         HttpLogger.e(HttpLogger.HTTPS,"post-url："+request.url());
     }
 
-    private static Callback callback = new Callback() {
+    private  Callback callback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
             HttpLogger.e(HttpLogger.HTTPS,"post-error："+e.toString());
+            httpListener.Fail(call,e);
         }
 
         @Override
@@ -36,7 +40,7 @@ public class HttpAsyGet {
             if (!response.isSuccessful()) {
                 throw new IOException("Unexpected code " + response);
             }else {
-                HttpLogger.e(HttpLogger.HTTPS,"post-result："+response.body().string());
+                httpListener.Success(call,response);
             }
         }
     };
