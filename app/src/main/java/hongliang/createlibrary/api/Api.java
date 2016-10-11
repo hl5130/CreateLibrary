@@ -11,10 +11,10 @@ import hongliang.mylibrary.https.callBack.HttpListener;
  * 网络API
  */
 public class Api {
-    private String HOST = "http://139.129.19.51/story"; //根地址
+    private static String HOST = "http://139.129.19.51/story"; //根地址
     private String InterfaceHostUrl = HOST+"/index.php/home/Interface/"; //接口根地址
-    private String IamgeHostUrl = HOST+"/Uploads/"; //图片根地址
-    private String AvatarHostUrl = HOST+"/Uploads/portrait/"; //头像根地址
+    public static String IamgeHostUrl = HOST+"/Uploads/"; //图片根地址
+    public static String AvatarHostUrl = HOST+"/Uploads/portrait/"; //头像根地址
 
 
     /**

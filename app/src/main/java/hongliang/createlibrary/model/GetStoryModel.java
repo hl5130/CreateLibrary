@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Administrator on 2016/10/10.
  *  获取故事的model
  */
-public class GetStorysModel {
+public class GetStoryModel {
 
     /**
      * result : 1

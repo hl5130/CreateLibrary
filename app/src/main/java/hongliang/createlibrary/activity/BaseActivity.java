@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import butterknife.ButterKnife;
 import hongliang.createlibrary.api.Api;
 
 /**
@@ -17,6 +18,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayout());
+        ButterKnife.bind(this);
         api = new Api();
         initUI();
         setListener();
@@ -53,8 +55,8 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         super.onDestroy();
     }
 
-    abstract int setLayout();//设置布局
-    abstract void initUI(); //查找控件
-    abstract void setListener();//设置监听器
-    abstract void initData();//获取网络数据
+    protected abstract int setLayout();//设置布局
+    protected abstract void initUI(); //查找控件
+    protected abstract void setListener();//设置监听器
+    protected abstract void initData();//获取网络数据
 }
