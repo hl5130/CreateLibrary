@@ -16,7 +16,12 @@ public class LoginActivity extends BaseActivity {
     Button btnLogin;
 
     @Override
-    protected int setLayout() {
+    protected void findView() {
+
+    }
+
+    @Override
+    protected int getContentViewId() {
         return R.layout.activity_login;
     }
 
@@ -32,6 +37,11 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    protected void clickEvent() {
 
     }
 

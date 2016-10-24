@@ -1,7 +1,7 @@
 package hongliang.createlibrary.activity;
 
-import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,9 +10,6 @@ import com.alibaba.fastjson.JSON;
 import java.io.IOException;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import hongliang.createlibrary.R;
 import hongliang.createlibrary.api.Api;
 import hongliang.createlibrary.model.GetStoryModel;
@@ -30,34 +27,43 @@ import okhttp3.Response;
  * 获取故事的Activity
  */
 public class GetStoryActivity extends BaseActivity {
-    @BindView(R.id.tv_1)
-    TextView tv1;
-    @BindView(R.id.tv_2)
-    TextView tv2;
-    @BindView(R.id.iv_)
-    ImageView iv;
-    @OnClick(R.id.tv_2)
+    private TextView tv1;
+    private Button btn;
+    private ImageView iv;
 
     @Override
-    protected int setLayout() {
+    protected void findView() {
+        tv1 = (TextView) findViewById(R.id.tv_1);
+        btn = (Button) findViewById(R.id.tv_2);
+        iv = (ImageView) findViewById(R.id.iv_);
+    }
+
+    @Override
+    protected int getContentViewId() {
         return R.layout.activity_main;
     }
 
     @Override
     protected void initUI() {
+
     }
 
     @Override
     protected void setListener() {
+//        tv2.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-
+//        tv2.setText("点击一下，获取网络数据");
     }
 
     @Override
-    public void onClick(View v) {
+    protected void clickEvent() {
+
+    }
+
+    private void getData(){
         api.getStorys("hot", "1", httpListener);
     }
 
@@ -78,7 +84,7 @@ public class GetStoryActivity extends BaseActivity {
                     DensityUtils.dp2px(GetStoryActivity.this, 150),
                     iv);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -106,4 +112,12 @@ public class GetStoryActivity extends BaseActivity {
         }
     };
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_2:
+                getData();
+                break;
+        }
+    }
 }

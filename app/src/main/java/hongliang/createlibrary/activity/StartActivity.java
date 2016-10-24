@@ -26,7 +26,12 @@ public class StartActivity extends BaseActivity {
     };
 
     @Override
-    protected int setLayout() {
+    protected void findView() {
+
+    }
+
+    @Override
+    protected int getContentViewId() {
         return R.layout.activity_start;
     }
 
@@ -46,13 +51,19 @@ public class StartActivity extends BaseActivity {
     }
 
     @Override
-    public void onClick(View v) {
+    protected void clickEvent() {
 
     }
+
 
     private void toAcivity(){
         Intent intent = new Intent(this,GetStoryActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

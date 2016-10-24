@@ -18,12 +18,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!" />
-        <TextView
+        <Button
             android:id="@+id/tv_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!"
-            android:textColor="#ccd44141"/>
+            android:textColor="#ccd44141"
+            android:onClick="onClick"/>
         <ImageView
             android:id="@+id/iv_"
             android:layout_width="150dp"

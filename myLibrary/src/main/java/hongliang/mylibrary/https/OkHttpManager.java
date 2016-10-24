@@ -1,6 +1,5 @@
 package hongliang.mylibrary.https;
 
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import hongliang.mylibrary.https.callBack.HttpListener;
@@ -12,7 +11,7 @@ import okhttp3.OkHttpClient;
  * Created by Administrator on 2016/10/9.
  *  Okhttp的管理者
  */
-public class OkHttpManager {
+ public class OkHttpManager {
     private OkHttpClient client;
     /**
      * 单例模式（使用的静态内部类方式）
