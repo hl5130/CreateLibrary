@@ -19,7 +19,7 @@ import okhttp3.Response;
  * Created by HONG-LIANG on 2016/10/9.
  * 异步post请求
  */
-public class HttpStringPost {
+public class HttpJsonPost {
     private final MediaType MEDIA_TYPE_MARKDOWN
             = MediaType.parse("application/json; charset=utf-8"); //要传递的数据的MIME类型
     private HttpListener httpListener;
@@ -39,14 +39,14 @@ public class HttpStringPost {
                 .post(RequestBody.create(MEDIA_TYPE_MARKDOWN,postData))
                 .build();
         client.newCall(request).enqueue(callback);
-        LogUtils.e(HttpLogger.HTTPS,"post-url："+request.url());
-        LogUtils.e(HttpLogger.HTTPS,"post-body："+postData);
+        HttpLogger.e(HttpLogger.HTTPS,"jsonPost-url："+request.url());
+        HttpLogger.e(HttpLogger.HTTPS,"jsonPost-body："+postData);
     }
 
     private Callback callback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
-            LogUtils.e(HttpLogger.HTTPS,"post-error："+e.toString());
+            HttpLogger.e(HttpLogger.HTTPS,"jsonPost-error："+e.toString());
             httpListener.Fail(call,e);
         }
 

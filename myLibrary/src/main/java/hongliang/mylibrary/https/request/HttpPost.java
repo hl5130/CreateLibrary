@@ -3,32 +3,41 @@ package hongliang.mylibrary.https.request;
 import java.io.IOException;
 
 import hongliang.mylibrary.https.HttpLogger;
-import hongliang.mylibrary.https.HttpTask;
 import hongliang.mylibrary.https.callBack.HttpListener;
-import hongliang.mylibrary.utils.LogUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Created by Administrator on 2016/10/9.
- * 异步Get请求，不会阻塞当前线程
+ * Created by HONG-LIANG on 2016/10/9.
+ * 异步post请求
  */
-public class HttpAsyGet {
+public class HttpPost {
+    private final MediaType MEDIA_TYPE_MARKDOWN
+            = MediaType.parse("application/json; charset=utf-8"); //要传递的数据的MIME类型
     private HttpListener httpListener;
 
-    public void run(String url, OkHttpClient client, HttpListener httpListener) throws Exception{
+    /**
+     *  带字符串的POST请求
+     * @param url 请求地址
+     * @param httpListener 请求结果回调
+     */
+    public void run(String url, OkHttpClient client, final HttpListener httpListener){
         this.httpListener = httpListener;
+        /**需要添加header的时候，使用 .addheader(key,value)方法*/
         Request request = new Request.Builder()
                 .url(url)
+//                .addHeader("token", MD5Util.getToken("/api/api/app/v2.0/member/order/info"))
                 .build();
         client.newCall(request).enqueue(callback);
         HttpLogger.e(HttpLogger.HTTPS,"jsonPost-url："+request.url());
     }
 
-    private  Callback callback = new Callback() {
+    private Callback callback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
             HttpLogger.e(HttpLogger.HTTPS,"jsonPost-error："+e.toString());
@@ -44,5 +53,4 @@ public class HttpAsyGet {
             }
         }
     };
-
 }

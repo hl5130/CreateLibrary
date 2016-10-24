@@ -4,7 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import hongliang.mylibrary.https.callBack.HttpListener;
 import hongliang.mylibrary.https.request.HttpAsyGet;
-import hongliang.mylibrary.https.request.HttpStringPost;
+import hongliang.mylibrary.https.request.HttpJsonPost;
+import hongliang.mylibrary.https.request.HttpPost;
 import okhttp3.OkHttpClient;
 
 /**
@@ -31,12 +32,21 @@ import okhttp3.OkHttpClient;
 
     /**
      *  异步post请求
-     * @param postData 请求体，字符串
+     * @param postData 请求体，Json模式字符串
      * @param url 请求地址
      * @param httpListener 数据回调
      */
-    protected void stringPost(String postData, String url, final HttpListener httpListener){
-       new HttpStringPost().run(postData,url,client,httpListener);
+    protected void _jsonPost(String postData, String url, final HttpListener httpListener){
+       new HttpJsonPost().run(postData,url,client,httpListener);
+    }
+
+    /**
+     *  异步post请求，无请求体
+     * @param url 请求地址
+     * @param httpListener 数据回调
+     */
+    protected void _post(String url,HttpListener httpListener){
+        new HttpPost().run(url,client,httpListener);
     }
 
     /**

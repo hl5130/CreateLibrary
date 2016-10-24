@@ -16,6 +16,8 @@ public class Api {
     public static String IamgeHostUrl = HOST+"/Uploads/"; //图片根地址
     public static String AvatarHostUrl = HOST+"/Uploads/portrait/"; //头像根地址
 
+    private String host = "http://pad.1000fun.com/index.php/api/flat/";
+
 
     /**
      *  获取故事
@@ -31,6 +33,16 @@ public class Api {
         params.setParams(map);
         params.setBaseUrl(InterfaceHostUrl);
         params.setMethod("getStorys");
-        HttpTask.post(params,httpListener);
+        HttpTask.jsonPost(params,httpListener);
+    }
+
+    public void test(String id,HttpListener httpListener){
+        HttpParams params = new HttpParams();
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("id",id);
+        params.setParams(map);
+        params.setBaseUrl(host);
+        params.setMethod("classlist");
+        HttpTask.jsonPost(params,httpListener);
     }
 }

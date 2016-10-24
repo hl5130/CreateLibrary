@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/10/9.
+ * Created by 洪亮 on 2016/10/9.<p>
  * Map转换成JSON
  */
 public class MapToJsonTool {

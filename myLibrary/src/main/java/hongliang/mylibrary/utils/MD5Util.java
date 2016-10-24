@@ -4,9 +4,10 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/*
- * MD5 算法
-*/
+/**
+ * Created by 洪亮 on 2016/10/9.<p>
+ *     MD5算法
+ */
 public class MD5Util {
 
     // 全局数组
