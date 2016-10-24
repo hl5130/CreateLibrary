@@ -18,7 +18,6 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayout());
-        ButterKnife.bind(this);
         api = new Api();
         initUI();
         setListener();
