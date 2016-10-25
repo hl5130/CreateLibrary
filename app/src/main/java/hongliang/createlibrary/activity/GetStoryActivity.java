@@ -13,11 +13,9 @@ import java.util.List;
 import hongliang.createlibrary.R;
 import hongliang.createlibrary.api.Api;
 import hongliang.createlibrary.model.GetStoryModel;
-import hongliang.mylibrary.https.HttpLogger;
 import hongliang.mylibrary.https.callBack.HttpListener;
 import hongliang.mylibrary.image.PicassUtils;
 import hongliang.mylibrary.utils.DensityUtils;
-import hongliang.mylibrary.utils.LogUtils;
 import hongliang.mylibrary.utils.SDCardUtil;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -58,7 +56,7 @@ public class GetStoryActivity extends BaseActivity{
     @Override
     public void onClick(View v) {
         api.getStorys("hot", "1", httpListener);
-//        api.test("0",httpListener1);
+        api.test("7",1,4,httpListener1);
     }
 
     /**
@@ -93,7 +91,7 @@ public class GetStoryActivity extends BaseActivity{
         @Override
         public void Success(Call call, final Response response) throws IOException {
             final String string = response.body().string();
-            LogUtils.e(HttpLogger.HTTPS, string);
+            System.out.println("jsonPost："+string);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -114,7 +112,7 @@ public class GetStoryActivity extends BaseActivity{
         @Override
         public void Success(Call call, Response response) throws IOException {
             String string = response.body().string();
-            LogUtils.e("HTTPSS",string);
+            System.out.println("post："+string);
         }
 
         @Override

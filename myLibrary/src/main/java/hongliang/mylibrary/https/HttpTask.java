@@ -28,13 +28,26 @@ public class HttpTask {
         HashMap<String, Object> params1 = params.getParams();
         if (null != params1){
             String url = baseUrl+method;
+            StringBuffer strb = new StringBuffer(url);
             Iterator iter = params1.entrySet().iterator();
-            while (iter.hasNext()) {
+            if (params1.size() == 1){
                 Map.Entry entry = (Map.Entry) iter.next();
                 Object key = entry.getKey();
                 Object val = entry.getValue();
+                strb.append("?"+key+"="+val);
+            }else {
+                Map.Entry entry = (Map.Entry) iter.next();
+                Object key = entry.getKey();
+                Object val = entry.getValue();
+                strb.append("?"+key+"="+val);
+                for (int i = 0; i < params1.size()-1; i++) {
+                    Map.Entry entry1 = (Map.Entry) iter.next();
+                    Object key1 = entry1.getKey();
+                    Object val1 = entry1.getValue();
+                    strb.append("&"+key1+"="+val1);
+                }
             }
-            OkHttpManager.getInstance()._post(url,listener);
+            OkHttpManager.getInstance()._post(String.valueOf(strb),listener);
         }
 
     }
@@ -43,6 +56,11 @@ public class HttpTask {
         OkHttpManager.getInstance().asyGet(url,httpListener);
     }
 
+    /**
+     * 将map转成Json，
+     * @param map
+     * @return
+     */
     private static String mapToJson(Map<String, Object> map) {
         Gson gson = new Gson();
         return gson.toJson(map);

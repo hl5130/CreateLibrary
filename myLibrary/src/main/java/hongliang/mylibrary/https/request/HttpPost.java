@@ -17,8 +17,6 @@ import okhttp3.Response;
  * 异步post请求
  */
 public class HttpPost {
-    private final MediaType MEDIA_TYPE_MARKDOWN
-            = MediaType.parse("application/json; charset=utf-8"); //要传递的数据的MIME类型
     private HttpListener httpListener;
 
     /**

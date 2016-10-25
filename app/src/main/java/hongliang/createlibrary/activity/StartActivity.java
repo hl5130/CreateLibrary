@@ -25,13 +25,9 @@ public class StartActivity extends BaseActivity {
         }
     };
 
-    @Override
-    protected void findView() {
-
-    }
 
     @Override
-    protected int getContentViewId() {
+    protected int setLayout() {
         return R.layout.activity_start;
     }
 
@@ -48,11 +44,6 @@ public class StartActivity extends BaseActivity {
     @Override
     protected void initData() {
         handler.postDelayed(runnable,3000);
-    }
-
-    @Override
-    protected void clickEvent() {
-
     }
 
 

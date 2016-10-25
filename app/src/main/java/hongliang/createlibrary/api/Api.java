@@ -36,13 +36,15 @@ public class Api {
         HttpTask.jsonPost(params,httpListener);
     }
 
-    public void test(String id,HttpListener httpListener){
+    public void test(String id,int page,int size ,HttpListener httpListener){
         HttpParams params = new HttpParams();
         HashMap<String,Object> map = new HashMap<>();
-        map.put("id",id);
+        map.put("classid",id);
+        map.put("page",page);
+        map.put("size",size);
         params.setParams(map);
         params.setBaseUrl(host);
-        params.setMethod("classlist");
-        HttpTask.jsonPost(params,httpListener);
+        params.setMethod("productlist");
+        HttpTask.post(params,httpListener);
     }
 }

@@ -2,9 +2,6 @@ package hongliang.createlibrary.activity;
 
 import android.view.View;
 import android.widget.Button;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import hongliang.createlibrary.R;
 
 /**
@@ -12,22 +9,14 @@ import hongliang.createlibrary.R;
  * 登录
  */
 public class LoginActivity extends BaseActivity {
-    @BindView(R.id.btn_login)
-    Button btnLogin;
 
     @Override
-    protected void findView() {
-
-    }
-
-    @Override
-    protected int getContentViewId() {
+    protected int setLayout() {
         return R.layout.activity_login;
     }
 
     @Override
     protected void initUI() {
-        ButterKnife.bind(this);
     }
 
     @Override
@@ -37,11 +26,6 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
-    }
-
-    @Override
-    protected void clickEvent() {
 
     }
 

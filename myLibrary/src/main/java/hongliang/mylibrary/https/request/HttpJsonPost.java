@@ -17,7 +17,7 @@ import okhttp3.Response;
 
 /**
  * Created by HONG-LIANG on 2016/10/9.
- * 异步post请求
+ * 异步post请求，使用Json请求体
  */
 public class HttpJsonPost {
     private final MediaType MEDIA_TYPE_MARKDOWN

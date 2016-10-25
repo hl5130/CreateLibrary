@@ -58,4 +58,8 @@ import okhttp3.OkHttpClient;
         new HttpAsyGet().run(url,client,httpListener);
     }
 
+    protected void close(){
+        client.cache();
+    }
+
 }
