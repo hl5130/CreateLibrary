@@ -21,7 +21,7 @@ public class StartActivity extends BaseActivity {
         public void run() {
             time--;
             tv_time.setText(time+"");
-            toAcivity();
+            toActivity();
         }
     };
 
@@ -33,7 +33,7 @@ public class StartActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-        tv_time = (TextView) findViewById(R.id.tv_time);
+        tv_time =getViewById(R.id.tv_time);
     }
 
     @Override
@@ -47,9 +47,8 @@ public class StartActivity extends BaseActivity {
     }
 
 
-    private void toAcivity(){
-        Intent intent = new Intent(this,GetStoryActivity.class);
-        startActivity(intent);
+    private void toActivity(){
+        IntentActivity(LoginActivity.class,null);
         finish();
     }
 

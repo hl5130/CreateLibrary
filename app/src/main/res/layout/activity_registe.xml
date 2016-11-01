@@ -5,14 +5,8 @@
 
     <include layout="@layout/layout_hear"/>
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_regist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"/>
-    <TextView
-        android:id="@+id/tv_regist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/regist_content"/>
-
+        android:text="注册"/>
 </LinearLayout>

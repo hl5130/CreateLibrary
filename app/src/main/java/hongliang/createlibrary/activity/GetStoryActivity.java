@@ -1,5 +1,10 @@
 package hongliang.createlibrary.activity;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,7 +30,7 @@ import okhttp3.Response;
  * Created by Administrator on 2016/10/10.
  * 获取故事的Activity
  */
-public class GetStoryActivity extends BaseActivity{
+public class GetStoryActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView tv1;
     private Button btn;
@@ -33,7 +38,7 @@ public class GetStoryActivity extends BaseActivity{
 
     @Override
     protected int setLayout() {
-        return R.layout.activity_main;
+        return R.layout.activity_main1;
     }
 
     @Override
@@ -41,6 +46,15 @@ public class GetStoryActivity extends BaseActivity{
         tv1 = (TextView) findViewById(R.id.tv_1);
         btn = (Button) findViewById(R.id.tv_2);
         iv = (ImageView) findViewById(R.id.iv_);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+       /* ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();*/
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null); //显示自己的图片
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -121,4 +135,8 @@ public class GetStoryActivity extends BaseActivity{
         }
     };
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
 }

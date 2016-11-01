@@ -1,6 +1,7 @@
 package hongliang.createlibrary.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -57,4 +58,23 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected abstract void initUI(); //查找控件
     protected abstract void setListener();//设置监听器
     protected abstract void initData();//获取网络数据
+
+
+    public <T extends View> T getViewById(int id){
+        return (T) findViewById(id);
+    }
+
+    /**
+     *  跳转操作
+     * @param cl 要跳转的类
+     * @param bundle 携带的数据 （null）
+     */
+    public void IntentActivity(Class cl,Bundle bundle){
+        Intent intent = new Intent(this,cl);
+        if (bundle != null){
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+//        overridePendingTransition(); //切换动画
+    }
 }

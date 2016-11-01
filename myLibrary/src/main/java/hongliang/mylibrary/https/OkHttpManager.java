@@ -54,7 +54,7 @@ import okhttp3.OkHttpClient;
      * @param url 请求地址
      * @throws Exception
      */
-    protected void asyGet(String url,HttpListener httpListener) throws Exception {
+    protected void _asyGet(String url, HttpListener httpListener) throws Exception {
         new HttpAsyGet().run(url,client,httpListener);
     }
 

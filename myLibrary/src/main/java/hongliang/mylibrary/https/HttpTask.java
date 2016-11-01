@@ -13,16 +13,16 @@ import hongliang.mylibrary.utils.MapToJsonTool;
  * Created by Administrator on 2016/10/9.
  */
 public class HttpTask {
-    public static void jsonPost(HttpParams params, HttpListener listener){
+    public static void jsonPost(HttpParams params, HttpListener listener) {
         String baseUrl = params.getBaseUrl();
         String method = params.getMethod();
         HashMap<String, Object> params1 = params.getParams();
-        if (null != params1){
-            OkHttpManager.getInstance()._jsonPost(mapToJson(params1),baseUrl+method,listener);
+        if (null != params1) {
+            OkHttpManager.getInstance()._jsonPost(mapToJson(params1), baseUrl + method, listener);
         }
     }
 
-    public static void post(HttpParams params,HttpListener listener){
+    public static void post(HttpParams params, HttpListener listener) {
         String baseUrl = params.getBaseUrl();
         String method = params.getMethod();
         HashMap<String, Object> params1 = params.getParams();
@@ -52,8 +52,33 @@ public class HttpTask {
 
     }
 
-    public static void get(String url,HttpListener httpListener) throws Exception {
-        OkHttpManager.getInstance().asyGet(url,httpListener);
+    public static void asyGet(HttpParams params, HttpListener httpListener) throws Exception {
+        String baseUrl = params.getBaseUrl();
+        String method = params.getMethod();
+        HashMap<String, Object> params1 = params.getParams();
+        if (null != params1){
+            String url = baseUrl+method;
+            StringBuffer strb = new StringBuffer(url);
+            Iterator iter = params1.entrySet().iterator();
+            if (params1.size() == 1){
+                Map.Entry entry = (Map.Entry) iter.next();
+                Object key = entry.getKey();
+                Object val = entry.getValue();
+                strb.append("?"+key+"="+val);
+            }else {
+                Map.Entry entry = (Map.Entry) iter.next();
+                Object key = entry.getKey();
+                Object val = entry.getValue();
+                strb.append("?"+key+"="+val);
+                for (int i = 0; i < params1.size()-1; i++) {
+                    Map.Entry entry1 = (Map.Entry) iter.next();
+                    Object key1 = entry1.getKey();
+                    Object val1 = entry1.getValue();
+                    strb.append("&"+key1+"="+val1);
+                }
+            }
+            OkHttpManager.getInstance()._post(String.valueOf(strb),httpListener);
+        }
     }
 
     /**
