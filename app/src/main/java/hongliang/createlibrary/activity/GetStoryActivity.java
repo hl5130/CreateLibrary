@@ -11,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,8 +22,10 @@ import hongliang.createlibrary.R;
 import hongliang.createlibrary.api.Api;
 import hongliang.createlibrary.model.GetStoryModel;
 import hongliang.mylibrary.https.callBack.HttpListener;
+import hongliang.mylibrary.image.FrescoUtils;
 import hongliang.mylibrary.image.PicassUtils;
 import hongliang.mylibrary.utils.DensityUtils;
+import hongliang.mylibrary.utils.LogUtils;
 import hongliang.mylibrary.utils.SDCardUtil;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -34,7 +39,7 @@ public class GetStoryActivity extends BaseActivity implements NavigationView.OnN
 
     private TextView tv1;
     private Button btn;
-    private ImageView iv;
+    private SimpleDraweeView iv;
 
     @Override
     protected int setLayout() {
@@ -45,7 +50,7 @@ public class GetStoryActivity extends BaseActivity implements NavigationView.OnN
     protected void initUI() {
         tv1 = (TextView) findViewById(R.id.tv_1);
         btn = (Button) findViewById(R.id.tv_2);
-        iv = (ImageView) findViewById(R.id.iv_);
+        iv = (SimpleDraweeView) findViewById(R.id.iv_);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
        /* ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -84,15 +89,10 @@ public class GetStoryActivity extends BaseActivity implements NavigationView.OnN
             int mg = SDCardUtil.getSDCardAvailableSize();
             int m = SDCardUtil.getSDCardFreeSize();
             int sdCardSize = SDCardUtil.getSDCardSize();
-            tv1.setText("可用："+mg+"MB，剩余："+m+"MB，总量："+sdCardSize+"MB");
-
-            List<String> pics = getStorysModel.getData().get(0).getPics();
-            String s = pics.get(0);
-            PicassUtils.loadSamllImage(GetStoryActivity.this,
-                    Api.IamgeHostUrl + s, R.mipmap.ic_launcher,
-                    DensityUtils.dp2px(GetStoryActivity.this, 150),
-                    DensityUtils.dp2px(GetStoryActivity.this, 150),
-                    iv);
+//            tv1.setText("可用："+mg+"MB，剩余："+m+"MB，总量："+sdCardSize+"MB");
+            tv1.setText(msg);
+            FrescoUtils.loadImage_netWork("https://www.baidu.com/img/bd_logo1.png",iv);
+//            FrescoUtils.loadGif_newtWork("http://img0.imgtn.bdimg.com/it/u=3994295166,4255223038&fm=21&gp=0.jpg",iv);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -105,7 +105,7 @@ public class GetStoryActivity extends BaseActivity implements NavigationView.OnN
         @Override
         public void Success(Call call, final Response response) throws IOException {
             final String string = response.body().string();
-            System.out.println("jsonPost："+string);
+            LogUtils.e(" jsonPost-result："+string);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -126,7 +126,7 @@ public class GetStoryActivity extends BaseActivity implements NavigationView.OnN
         @Override
         public void Success(Call call, Response response) throws IOException {
             String string = response.body().string();
-            System.out.println("post："+string);
+           LogUtils.e(" jsonPost-result："+string);
         }
 
         @Override

@@ -78,7 +78,7 @@ public class GetStoryModel {
          */
 
         private UserBean user;
-        private List<String> pics;
+        private String[] pics;
 
         public String getId() {
             return id;
@@ -160,11 +160,11 @@ public class GetStoryModel {
             this.user = user;
         }
 
-        public List<String> getPics() {
+        public String[] getPics() {
             return pics;
         }
 
-        public void setPics(List<String> pics) {
+        public void setPics(String[] pics) {
             this.pics = pics;
         }
 

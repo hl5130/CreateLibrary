@@ -16,4 +16,5 @@ public class PicassUtils {
                 .resize(height,width)
                 .into(imageView);
     }
+
 }

@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CreateLibrary.iml" filepath="$PROJECT_DIR$/CreateLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonadapter/commonadapter.iml" filepath="$PROJECT_DIR$/commonadapter/commonadapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/myLibrary/myLibrary.iml" filepath="$PROJECT_DIR$/myLibrary/myLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/refreshlayout/refreshlayout.iml" filepath="$PROJECT_DIR$/refreshlayout/refreshlayout.iml" />
     </modules>
   </component>
 </project>

@@ -26,4 +26,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.alibaba:fastjson:1.2.17'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.facebook.fresco:fresco:0.14.1'
+    compile 'com.facebook.fresco:animated-gif:0.14.1'
 }

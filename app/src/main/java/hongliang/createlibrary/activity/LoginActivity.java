@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_login:
-                IntentActivity(GetStoryActivity.class,null);
+                IntentActivity(MainActivity.class,null);
                 finish();
                 break;
             case R.id.tv_regist:
