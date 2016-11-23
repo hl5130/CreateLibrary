@@ -1,6 +1,5 @@
 package hongliang.createlibrary.activity;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
